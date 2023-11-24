@@ -11,7 +11,6 @@ class _SplashPageState extends State<SplashPage> {
   var _scale = 10.0;
   var _animationOpacityLogo = 0.0;
   double get _logoAnimation => 250 * _scale;
-  
 
   @override
   void initState() {
@@ -40,6 +39,7 @@ class _SplashPageState extends State<SplashPage> {
               duration: const Duration(seconds: 3),
               curve: Curves.easeIn,
               opacity: _animationOpacityLogo,
+              onEnd: () {},
               child: AnimatedContainer(
                   duration: const Duration(seconds: 3),
                   width: _logoAnimation,
