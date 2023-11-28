@@ -1,3 +1,5 @@
+import 'package:barbearia_tcc/src/core/ui/constants.dart';
+import 'package:barbearia_tcc/src/features/auth/login/login_page.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -30,25 +32,46 @@ class _SplashPageState extends State<SplashPage> {
       body: DecoratedBox(
         decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/images/background_img.png'),
+              image: AssetImage(AssetsImage.background2),
               fit: BoxFit.cover,
-              opacity: 0.2),
+              opacity: 0.3),
         ),
         child: Center(
           child: AnimatedOpacity(
+            duration: const Duration(seconds: 3),
+            curve: Curves.easeIn,
+            opacity: _animationOpacityLogo,
+            onEnd: () {
+              Navigator.of(context).pushAndRemoveUntil(
+                  PageRouteBuilder(
+                    settings: const RouteSettings(name: '/auth/login'),
+                    pageBuilder: (
+                      context,
+                      animation,
+                      secondaryAnimation,
+                    ) {
+                      return const LoginPage();
+                    },
+                    transitionsBuilder: (_, animation, __, child) {
+                      return FadeTransition(
+                        opacity: animation,
+                        child: child,
+                      );
+                    },
+                  ),
+                  (route) => false);
+            },
+            child: AnimatedContainer(
               duration: const Duration(seconds: 3),
-              curve: Curves.easeIn,
-              opacity: _animationOpacityLogo,
-              onEnd: () {},
-              child: AnimatedContainer(
-                  duration: const Duration(seconds: 3),
-                  width: _logoAnimation,
-                  height: _logoAnimation,
-                  curve: Curves.linearToEaseOut,
-                  child: Image.asset(
-                    'assets/images/logo258x258.png',
-                    fit: BoxFit.cover,
-                  ))),
+              width: _logoAnimation,
+              height: _logoAnimation,
+              curve: Curves.linearToEaseOut,
+              child: Image.asset(
+                AssetsImage.logoBarbearia,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
         ),
       ),
     );

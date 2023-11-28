@@ -1,5 +1,7 @@
 import 'package:asyncstate/asyncstate.dart';
+import 'package:barbearia_tcc/src/core/ui/barberaria_theme.dart';
 import 'package:barbearia_tcc/src/core/ui/widget/loader.dart';
+import 'package:barbearia_tcc/src/features/auth/login/login_page.dart';
 import 'package:barbearia_tcc/src/features/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 
@@ -13,13 +15,11 @@ class BarbeariaApp extends StatelessWidget {
         builder: (asyncNavigatorObserver) {
           return MaterialApp(
             title: 'Flutter Demo',
-            theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-              useMaterial3: true,
-            ),
+            theme: BarberariaTheme.themeData,
             navigatorObservers: [asyncNavigatorObserver],
             routes: {
               '/': (_) => const SplashPage(),
+              '/auth/login': (context) => const LoginPage(),
             },
           );
         });
