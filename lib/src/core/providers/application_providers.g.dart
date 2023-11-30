@@ -22,9 +22,7 @@ final restClientProvider = Provider<RestClient>.internal(
 typedef RestClientRef = ProviderRef<RestClient>;
 String _$userRepositoryHash() => r'4a324f69804b6738f220b7c48b19aad627021894';
 
-//**************************************************************************
 /// See also [userRepository].
-//**************************************************************************
 @ProviderFor(userRepository)
 final userRepositoryProvider = Provider<UserRepository>.internal(
   userRepository,
@@ -37,5 +35,20 @@ final userRepositoryProvider = Provider<UserRepository>.internal(
 );
 
 typedef UserRepositoryRef = ProviderRef<UserRepository>;
+String _$userLoginServiceHash() => r'62431221aac8e45888e74928ecf0b5836e72b999';
+
+/// See also [userLoginService].
+@ProviderFor(userLoginService)
+final userLoginServiceProvider = Provider<UserLoginService>.internal(
+  userLoginService,
+  name: r'userLoginServiceProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$userLoginServiceHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef UserLoginServiceRef = ProviderRef<UserLoginService>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
