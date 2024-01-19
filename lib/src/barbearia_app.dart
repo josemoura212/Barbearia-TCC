@@ -20,6 +20,8 @@ class BarbeariaApp extends StatelessWidget {
           routes: {
             '/': (_) => const SplashPage(),
             '/auth/login': (context) => const LoginPage(),
+            '/home/adm': (context) => const Text('ADM'),
+            '/home/employee': (context) => const Text('Employee'),
           },
         );
       },

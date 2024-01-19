@@ -39,9 +39,11 @@ class _LoginPageState extends ConsumerState<LoginPage> {
         case LoginState(status: LoginStateStatus.error):
           Messages.showError('Erro ao  realizar login', context);
         case LoginState(status: LoginStateStatus.admLogin):
-          Messages.showSuccess('Erro ao  realizar login', context);
+          Navigator.of(context)
+              .pushNamedAndRemoveUntil('/home/adm', (route) => false);
         case LoginState(status: LoginStateStatus.employeelogin):
-          Messages.showSuccess('Erro ao  realizar login', context);
+          Navigator.of(context)
+              .pushNamedAndRemoveUntil('/home/employee', (route) => false);
       }
     });
 
@@ -122,7 +124,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                                   case (false || null):
                                     Messages.showError(
                                         'Campo inválido', context);
-                                    break;
+
                                   case true:
                                     login(
                                         email: _emailEC.text,

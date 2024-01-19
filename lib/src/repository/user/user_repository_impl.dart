@@ -16,8 +16,10 @@ class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl({required this.restClient});
 
   @override
-  Future<Either<AuthException, String>> login(
-      {required String email, required String password}) async {
+  Future<Either<AuthException, String>> login({
+    required String email,
+    required String password,
+  }) async {
     try {
       final Response(:data) = await restClient.unAuth.post('/auth', data: {
         'email': email,
@@ -32,9 +34,7 @@ class UserRepositoryImpl implements UserRepository {
         if (statusCode == HttpStatus.forbidden) {
           log('Login ou senha inválido', error: e, stackTrace: s);
           return Failure(
-            exception: AuthUnauthorizedExcetion(
-              message: 'Login ou senha inválido',
-            ),
+            exception: AuthUnauthorizedExcetion(),
           );
         }
       }
@@ -56,7 +56,7 @@ class UserRepositoryImpl implements UserRepository {
           message: 'Erro ao buscar usuário logado',
         ),
       );
-    }on ArgumentError catch (e) {
+    } on ArgumentError catch (e) {
       log('Invalid json', error: e);
       return Failure(
         exception: RepositoryException(

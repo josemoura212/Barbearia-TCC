@@ -9,5 +9,5 @@ final class AuthError extends AuthException {
 }
 
 final class AuthUnauthorizedExcetion extends AuthException {
-  AuthUnauthorizedExcetion({required super.message});
+  AuthUnauthorizedExcetion() : super(message: '');
 }
