@@ -15,4 +15,6 @@ sealed class AssetsImage {
   static const background1 = 'assets/images/background_imgteste.png';
   static const background2 = 'assets/images/background_img.png';
   static const logoBarbearia = 'assets/images/logo258.png';
+  static const perfil = 'assets/images/perfil_90x90.png';
+  static const perfilTransparente = 'assets/images/perfil_90x90_sem_fundo.png';
 }

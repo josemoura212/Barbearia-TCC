@@ -41,6 +41,8 @@ dependencies:
   asyncstate: ^2.1.0
   loading_animation_widget: ^1.2.0+4
   shared_preferences: ^2.2.2
+  validatorless: ^1.2.3
+  top_snackbar_flutter: ^3.1.0
 
 dev_dependencies:
   flutter_test:
