@@ -11,17 +11,20 @@ class BarbeariaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AsyncStateBuilder(
-        customLoader: const Loader(),
-        builder: (asyncNavigatorObserver) {
-          return MaterialApp(
-            title: 'Flutter Demo',
-            theme: BarberariaTheme.themeData,
-            navigatorObservers: [asyncNavigatorObserver],
-            routes: {
-              '/': (_) => const SplashPage(),
-              '/auth/login': (context) => const LoginPage(),
-            },
-          );
-        });
+      customLoader: const Loader(),
+      builder: (asyncNavigatorObserver) {
+        return MaterialApp(
+          title: 'Flutter Demo',
+          theme: BarberariaTheme.themeData,
+          navigatorObservers: [asyncNavigatorObserver],
+          routes: {
+            '/': (_) => const SplashPage(),
+            '/auth/login': (context) => const LoginPage(),
+            '/home/adm': (context) => const Text('ADM'),
+            '/home/employee': (context) => const Text('Employee'),
+          },
+        );
+      },
+    );
   }
 }

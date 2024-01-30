@@ -1,10 +1,11 @@
+import 'package:barbearia_tcc/src/core/rest_client/interceptors/auth_interceptor.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 
 final class RestClient extends DioForNative {
   RestClient()
       : super(BaseOptions(
-          baseUrl: 'http://192.168.1.105:8080/',
+          baseUrl: 'http://10.0.0.127:8080/',
           connectTimeout: const Duration(seconds: 10),
           receiveTimeout: const Duration(seconds: 60),
         )) {
@@ -12,7 +13,8 @@ final class RestClient extends DioForNative {
       LogInterceptor(
         requestBody: true,
         responseBody: true,
-      )
+      ),
+      AuthInterceptor(),
     ]);
   }
 
