@@ -11,7 +11,7 @@ class AuthInterceptor extends Interceptor {
 
     headers.remove(authHeaderKey);
 
-    if (extra case {'Dio_AUTH_KEY': true}) {
+    if (extra case {'DIO_AUTH_KEY': true}) {
       final sp = await SharedPreferences.getInstance();
       headers.addAll({
         authHeaderKey: 'Bearer ${sp.getString(LocalStorageKeys.accessToken)}'
