@@ -11,6 +11,16 @@ sealed class BarberariaTheme {
 
   static ThemeData themeData = ThemeData(
     useMaterial3: true,
+    appBarTheme: const AppBarTheme(
+      centerTitle: true,
+      iconTheme: IconThemeData(color: ColorsConstants.primary),
+      backgroundColor: Colors.white,
+      titleTextStyle: TextStyle(
+          color: ColorsConstants.primary,
+          fontSize: 18,
+          fontWeight: FontWeight.w500,
+          fontFamily: FontConstants.fontfamily),
+    ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: Colors.white,
