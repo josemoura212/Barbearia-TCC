@@ -5,6 +5,7 @@ import 'package:barbearia_tcc/src/core/exceptions/auth_exception.dart';
 import 'package:barbearia_tcc/src/core/exceptions/repository_exception.dart';
 
 import 'package:barbearia_tcc/src/core/fp/either.dart';
+import 'package:barbearia_tcc/src/core/fp/nil.dart';
 import 'package:barbearia_tcc/src/core/rest_client/rest_client.dart';
 import 'package:barbearia_tcc/src/model/user_model.dart';
 import 'package:dio/dio.dart';
@@ -61,6 +62,27 @@ class UserRepositoryImpl implements UserRepository {
       return Failure(
         exception: RepositoryException(
           message: e.message,
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<Either<RepositoryException, Nil>> registerAdmin(
+      ({String email, String name, String password}) userData) async {
+    try {
+      await restClient.unAuth.post('users', data: {
+        'email': userData.email,
+        'name': userData.name,
+        'password': userData.password,
+        'profile': 'ADM',
+      });
+      return Success<RepositoryException, Nil>(value: Nil());
+    } on DioException catch (e, s) {
+      log('erro ao registrar usuário', error: e, stackTrace: s);
+      return Failure(
+        exception: RepositoryException(
+          message: 'Erro ao registrar usuário admin',
         ),
       );
     }
