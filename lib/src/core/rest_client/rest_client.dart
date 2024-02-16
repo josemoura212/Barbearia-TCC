@@ -5,7 +5,7 @@ import 'package:dio/io.dart';
 final class RestClient extends DioForNative {
   RestClient()
       : super(BaseOptions(
-          baseUrl: 'http://10.0.0.127:8080/',
+          baseUrl: 'http://10.0.0.143:8080/',
           connectTimeout: const Duration(seconds: 10),
           receiveTimeout: const Duration(seconds: 60),
         )) {

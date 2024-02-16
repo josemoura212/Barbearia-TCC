@@ -72,14 +72,14 @@ class UserRepositoryImpl implements UserRepository {
       ({String email, String name, String password}) userData) async {
     try {
       await restClient.unAuth.post('users', data: {
-        'email': userData.email,
         'name': userData.name,
+        'email': userData.email,
         'password': userData.password,
         'profile': 'ADM',
       });
       return Success<RepositoryException, Nil>(value: Nil());
     } on DioException catch (e, s) {
-      log('erro ao registrar usuário', error: e, stackTrace: s);
+      log('erro ao registrar usuário admin', error: e, stackTrace: s);
       return Failure(
         exception: RepositoryException(
           message: 'Erro ao registrar usuário admin',
